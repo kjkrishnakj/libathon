@@ -7,6 +7,9 @@ const BookSchema = new mongoose.Schema({
     slug: { type: String, required: true, unique: true },
     descr: { type: String, required: true },
     img: { type: String, required: true },
+    row: { type: String, required: true },
+    cnum: { type: String, required: true },
+    floor: { type: String, required: true },
     availableQty: { type: Number, required: true },
 }, { timestamps: true });
 

@@ -9,6 +9,9 @@ export default function Admin({ books }) {
     descr: "",
     img: "",
     availableQty: "",
+    row:"",
+    cnum:"",
+    floor:""
   });
 
   const handleChange = (e) => {
@@ -64,7 +67,7 @@ export default function Admin({ books }) {
         {Object.keys(formData).map((key) => (
           <input
             key={key}
-            type={key === "availableQty" ? "number" : "text"}
+            type={key === "availableQ ty" ? "number" : "text"}
             name={key}
             placeholder={key}
             value={formData[key]}
@@ -85,6 +88,9 @@ export default function Admin({ books }) {
               <p>Author: {book.author}</p>
               <p>Category: {book.category}</p>
               <p>Available: {book.availableQty}</p>
+              <p>floor: {book.floor}</p>
+              <p>row: {book.row}</p>
+              <p>cnum: {book.cnum}</p>
             </div>
             <div className="space-x-2">
               <button className="bg-green-500 text-white p-2 rounded" onClick={() => handleUpdate(book._id, book.availableQty + 1)}>+1</button>
