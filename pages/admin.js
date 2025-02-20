@@ -1,3 +1,5 @@
+import AdminBookRequests from "@/components/AdminBookRequests";
+import AdminSpotlight from "@/components/AdminSpotlight";
 import { useState } from "react";
 
 export default function Admin({ books }) {
@@ -99,9 +101,12 @@ export default function Admin({ books }) {
                 Delete
               </button>
             </div>
+          
           </div>
         ))}
       </div>
+      <AdminSpotlight/>
+      <AdminBookRequests/>
     </div>
   );
 }

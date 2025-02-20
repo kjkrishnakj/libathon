@@ -10,6 +10,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import AOS from "aos";
+import Spotlight from "@/components/Spotlight";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -104,6 +105,7 @@ const handleSearchSubmit = async (e) => {
 
 
       </Carousel>
+      <Spotlight/>
 
 
 
