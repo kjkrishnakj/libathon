@@ -53,7 +53,7 @@ const Post = ({ error, book, cat, author }) => {
         //     console.error("Error updating quantity:", error);
         // }
         // console.log("id:", id);
-s
+
 
 
         router.push(`${process.env.NEXT_PUBLIC_HOST}/issue?bookId=${id}&img=${img}&title=${title}&slug=${slug}`);
