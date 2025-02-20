@@ -25,59 +25,75 @@ const geistMono = Geist_Mono({
 export default function Home({ books }) {
   useEffect(() => {
     AOS.init();
+
+    // Stop camera if token is present
+    const token = localStorage.getItem("token");
+    if (token) {
+      stopCamera();
+    }
   }, []);
 
+  const stopCamera = () => {
+    const video = document.getElementById("videoElement");
+    if (video && video.srcObject) {
+      const tracks = video.srcObject.getTracks();
+      tracks.forEach((track) => track.stop()); // Stop all camera tracks
+      video.srcObject = null;
+      console.log("Camera stopped due to token presence.");
+    }
+  };
 
 
 
 
-const [searchText, setSearchText] = useState('');
-const [dropdown, setDropdown] = useState(false);
-const [foundbook, setFoundbook] = useState('');
+
+  const [searchText, setSearchText] = useState('');
+  const [dropdown, setDropdown] = useState(false);
+  const [foundbook, setFoundbook] = useState('');
 
 
-const handleSearchSubmit = async (e) => {
-  setSearchText(e.target.value);
-  e.preventDefault();
-  // console.log(searchText);
-  
-  const data = { searchText }
-  let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getbook`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data),
-  })
-  let response = await res.json()
+  const handleSearchSubmit = async (e) => {
+    setSearchText(e.target.value);
+    e.preventDefault();
+    // console.log(searchText);
 
-  if (response.success) {
-    setFoundbook(response.book);
-    // console.log(response);
-    
-    // console.log("foundbook", response.book.title);
-    if (searchText.length <= 1) {
+    const data = { searchText }
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getbook`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
+    let response = await res.json()
 
-      setDropdown(false);
+    if (response.success) {
+      setFoundbook(response.book);
+      // console.log(response);
+
+      // console.log("foundbook", response.book.title);
+      if (searchText.length <= 1) {
+
+        setDropdown(false);
+      }
+      else {
+        setDropdown(true);
+
+      }
+
+
     }
     else {
-      setDropdown(true);
+      console.log("err");
 
     }
-
-
-  }
-  else {
-    console.log("err");
-
-  }
-};
+  };
 
 
 
   return (
     <>
-    <Carousel
+      <Carousel
         responsive={{
           superLargeDesktop: { breakpoint: { max: 4000, min: 1024 }, items: 1 },
           desktop: { breakpoint: { max: 1024, min: 768 }, items: 1 },
@@ -93,20 +109,17 @@ const handleSearchSubmit = async (e) => {
         arrows={false}
       >
         <div className="h-[30vh] sm:h-[55vh] mt-20 ">
-          <Link href="/product/OnePlus115g">
-            <img
-              src="/vitclib.jpg"
-              alt="image 1"
-              className="h-full w-full object-fill"
-            />
-          </Link>
+          <img
+            src="/vitclib.jpg"
+            alt="image 1"
+            className="h-full w-full object-fill"
+          />
         </div>
 
 
 
       </Carousel>
-      <Spotlight/>
-
+      <Spotlight />
 
 
       <div className="relative flex flex-col pt-12 sm:pt-6 items-center justify-center w-full">
@@ -119,22 +132,22 @@ const handleSearchSubmit = async (e) => {
               <span className="sr-only">Search icon</span>
             </div>
             <input value={searchText} onChange={handleSearchSubmit} type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-green-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Enter title" />
-            <button  type="submit" onClick={handleSearchSubmit} className="ml-2 p-2 text-sm text-white bg-[#0095B3] rounded-lg hover:bg-005A6E focus:ring-2 focus:ring-005A6E focus:ring-opacity-50">
+            <button type="submit" onClick={handleSearchSubmit} className="ml-2 p-2 text-sm text-white bg-[#0095B3] rounded-lg hover:bg-005A6E focus:ring-2 focus:ring-005A6E focus:ring-opacity-50">
               Search
             </button>
           </form>
         </div>
         {dropdown && (
           <div className="border rounded-md px-5 w-[16rem] bg-white mt-4">
-            <Link passHref={true} href={`/book/${foundbook.slug}`}> 
-               <img src={foundbook.img} alt="" className="w-full h-full rounded overflow-hidden object-fill" style={{ height: "16rem", width: "16rem" }} /> 
-             </Link>
+            <Link passHref={true} href={`/book/${foundbook.slug}`}>
+              <img src={foundbook.img} alt="" className="w-full h-full rounded overflow-hidden object-fill" style={{ height: "16rem", width: "16rem" }} />
+            </Link>
             <p className="text-center">{foundbook.author}</p>
             <p className="text-center">{foundbook.title}</p>
           </div>
         )}
       </div>
-      
+
 
       <div className="flex flex-wrap -m-4  justify-center" id="catalog"  >
         {Object.keys(books).map((item) => {

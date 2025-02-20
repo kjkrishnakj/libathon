@@ -17,6 +17,7 @@ export default async function handler(req, res) {
 
     if (!book) {
       console.log("No book found for slug:", slug);
+      
       return res.status(404).json({ error: "Book not found" });
     }
 

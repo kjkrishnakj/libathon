@@ -62,7 +62,7 @@ const FaceDetection = ({ onFaceDetected }) => {
       <video
         ref={videoRef}
         autoPlay
-        muted
+        mutedc
         width="640"
         height="480"
         style={{ display: "block" }}

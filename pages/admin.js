@@ -1,4 +1,5 @@
 import AdminBookRequests from "@/components/AdminBookRequests";
+import AdminEbookManager from "@/components/AdminEbook";
 import AdminSpotlight from "@/components/AdminSpotlight";
 import { useState } from "react";
 
@@ -107,6 +108,7 @@ export default function Admin({ books }) {
       </div>
       <AdminSpotlight/>
       <AdminBookRequests/>
+      <AdminEbookManager />
     </div>
   );
 }

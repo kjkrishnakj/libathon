@@ -17,7 +17,7 @@ export default function SearchPage() {
       const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
       // Generate description
-      const prompt = `Provide description of the book related to: ${query} in about 500 words. If the input is not related to any book, respond with descriptions to different books related to the input`;
+      const prompt = `Provide description of the book related to: ${query} in a line and in second line give related books to the searched book. If the input is not related to any book, respond with descriptions to different books related to the input`;
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const text = response.text();
