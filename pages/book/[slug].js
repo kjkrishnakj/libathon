@@ -84,7 +84,6 @@ const Post = ({ error, book, cat, author }) => {
                         <div className="flex">
                             {book.availableQty <= 0 ? <span className="title-font font-medium text-2xl text-gray-900">Out Of Stock!</span> :
                                 <span className="title-font font-medium text-2xl text-gray-900">{book.author}</span>}
-                            <button onClick={() => { buyNow(slug, book.availableQty, book.title, book._id, book.img) }} disabled={book.availableQty <= 0 ? true : false} className=" ml-10 disabled:bg-indigo-500 text-white  bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-700 rounded">Issue</button>
 
                         </div>
                         <h1 className="text-xl mt-8 text-gray-700  font-bold  mb-2">Details:</h1>
@@ -93,6 +92,7 @@ const Post = ({ error, book, cat, author }) => {
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Floor: </span>{book.floor}</li>
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Row: </span>{book.row}</li>
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Class number: </span>{book.cnum} </li>
+                            <button onClick={() => { buyNow(slug, book.availableQty, book.title, book._id, book.img) }} disabled={book.availableQty <= 0 ? true : false} className=" ml-10 my-10 disabled:bg-indigo-500 text-white  bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-700 rounded">Issue</button>
 
 
 
