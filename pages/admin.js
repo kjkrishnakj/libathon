@@ -18,17 +18,17 @@ export default function Admin({ books }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("/api/book", formData);
+    await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/book`, formData);
     window.location.reload();
   };
 
   const handleUpdate = async (id, qty) => {
-    await axios.put("/api/book", { id, availableQty: qty });
+    await axios.put(`${process.env.NEXT_PUBLIC_HOST}/api/book`, { id, availableQty: qty });
     window.location.reload();
   };
 
   const handleDelete = async (id) => {
-    await axios.delete("/api/book", { data: { id } });
+    await axios.delete(`${process.env.NEXT_PUBLIC_HOST}/api/book`, { data: { id } });
     window.location.reload();
   };
 
