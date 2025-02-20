@@ -17,12 +17,12 @@ export default function Admin({ books }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`/api/book`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ...formData, availableQty: Number(formData.availableQty) }),
+      body: JSON.stringify(formData),
     });
     if (response.ok) {
       window.location.reload();
@@ -30,7 +30,7 @@ export default function Admin({ books }) {
   };
 
   const handleUpdate = async (id, qty) => {
-    const response = await fetch(`/api/book`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export default function Admin({ books }) {
   };
 
   const handleDelete = async (id) => {
-    const response = await fetch(`/api/book`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -107,6 +107,6 @@ export async function getServerSideProps() {
     return { props: { books } };
   } catch (error) {
     console.error("Error fetching books:", error);
-    return { props: { books: [] } };
+    return { props: { books: [] } }; // Return an empty array or handle the error gracefully
   }
 }

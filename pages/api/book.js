@@ -1,8 +1,12 @@
 import connectDb from "../../middleware/mongoose";
 import Book from "../../models/Book";
 
-const handler = async (req, res) => {
+export default async function handler(req, res) {
   try {
+    console.time("DB Connection");
+    await connectDb();
+    console.timeEnd("DB Connection");
+
     if (req.method === "GET") {
       const books = await Book.find({}).lean();
       return res.status(200).json(books);
@@ -34,6 +38,4 @@ const handler = async (req, res) => {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error", details: error.message });
   }
-};
-
-export default connectDb(handler);
+}
