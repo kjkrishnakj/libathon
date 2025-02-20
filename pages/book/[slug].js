@@ -137,7 +137,7 @@ const Post = ({ error, book, cat, author }) => {
                         autoPlaySpeed={2000}
                         infinite={true}>
                             {Object.keys(cat).map((item) => (
-                                <Link passHref={true} key={cat[item]._id} href={`/product/${cat[item].slug}`}>
+                                <Link passHref={true} key={cat[item]._id} href={`/book/${cat[item].slug}`}>
                                     <div className="lg:w-1/2 md:w-1/2 p-2" style={{ width: "6cm", margin: "0.5cm 2cm" }}>
                                         <img src={cat[item].img} alt="" className="w-full h-full object-fill" style={{ height: "14rem", width: "11rem", margin: "auto" }} />
                                         <div className="mt-4">
@@ -150,8 +150,8 @@ const Post = ({ error, book, cat, author }) => {
                         </Carousel>
                     ) : (
                         <Carousel  responsive={{
-                            superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 3 },
-                            desktop: { breakpoint: { max: 1200, min: 1024 }, items: 3 },
+                            superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 4 },
+                            desktop: { breakpoint: { max: 1200, min: 1024 }, items: 4 },
                             tablet: { breakpoint: { max: 1024, min: 768 }, items: 2 },
                             mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
                         }}
@@ -160,7 +160,7 @@ const Post = ({ error, book, cat, author }) => {
                         autoPlaySpeed={2000}
                         infinite={true}>
                             {Object.keys(author).map((item) => (
-                                <Link passHref={true} key={author[item]._id} href={`/book/${author[item].slug}`}>
+                                <Link passHref={true} key={author[item]._id} href={`/product/${author[item].slug}`}>
                                     <div className="lg:w-1/2 md:w-1/2 p-2" style={{ width: "6cm", margin: "0.5cm 2cm" }}>
                                         <img src={author[item].img} alt="" className="w-full h-full object-fill" style={{ height: "14rem", width: "11rem", margin: "auto" }} />
                                         <div className="mt-4">
