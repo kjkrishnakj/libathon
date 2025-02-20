@@ -46,7 +46,7 @@ const Spotlight = () => {
   }
 
   return (
-    <div className="bg-yellow-100 p-4 rounded-md shadow-md my-4">
+    <div className="bg-yellow-100  p-4 rounded-md shadow-md my-4" style={{height:"44vh"}}>
       <h2 className="text-lg font-bold text-yellow-900">Spotlight Messages</h2>
       <ul className="list-disc pl-5">
         {messages.map((msg) => (

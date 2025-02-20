@@ -116,12 +116,15 @@ export default function Home({ books }) {
 
 
       <div className="flex w-full">
-  <div className="w-1/2">
+      <div className="flex w-full">
+  <div className="w-1/2 mx-4  flex-1" >
     <Spotlight />
   </div>
-  <div className="w-1/2 m-2">
+  <div className="w-1/2 m-2 h-full flex-1">
     <LeaderBoards />
   </div>
+</div>
+ 
 </div>
 
       <div className="relative flex flex-col pt-12 sm:pt-6 items-center justify-center w-full">
