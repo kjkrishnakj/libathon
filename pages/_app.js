@@ -1,6 +1,10 @@
 import Navbar from "@/components/Navbar";
+import { Outfit } from "next/font/google";
 import "@/styles/globals.css";
 import { useState } from "react";
+import Footer from "@/components/Footer";
+
+const outfit = Outfit({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export default function App({ Component, pageProps }) {
   const [rnum, setRnum] = useState('');  
@@ -11,10 +15,11 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
-    <>
+    <div >
     
       <Navbar />
       <Component rnum={rnum} {...pageProps} /> 
-    </>
+      <Footer />
+    </div>
   );
 }
