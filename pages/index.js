@@ -112,6 +112,7 @@ export default function Home({ books }) {
 
       </Carousel>
 
+
       <div className="flex w-full">
   <div className="w-1/2">
     <Spotlight />
