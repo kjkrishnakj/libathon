@@ -14,7 +14,7 @@ const LeaderBoards = () => {
   return (
     <section className="bg-gradient-to-r  from-blue-400 to-indigo-600 text-white body-font py-1">
       <div className="container   px-5 mx-auto  text-center" style={{height:"44vh" }}>
-        <h2 className="text-2xl font-bold mb-2">🏆 Top 3 Uers</h2>
+        <h2 className="text-2xl font-bold mb-2">🏆 Top 3 Users</h2>
 
         {topUsers.length > 0 ? (
         <div className="bg-white p-6 mb-6 shadow-lg">
