@@ -65,8 +65,8 @@ const Post = ({ error, book, cat, author }) => {
 
         <Head><title> BookHive | {book.title}</title></Head>
         <section className="text-gray-600 body-font overflow-hidden">
-            {/* <div class="w-full ">
-      <img src="/img/iqoo logo.jpg" alt="Full Width Image" class="w-full object-co" style={{ height: "10cm" }} />
+            {/* <div className="w-full ">
+      <img src="/img/iqoo logo.jpg" alt="Full Width Image" className="w-full object-co" style={{ height: "10cm" }} />
     </div> */}
 
             <ToastContainer />
