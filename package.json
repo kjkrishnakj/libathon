@@ -25,7 +25,8 @@
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
     "react-multi-carousel": "^2.8.5",
-    "react-toastify": "^11.0.3"
+    "react-toastify": "^11.0.3",
+    "recharts": "^2.15.1"
   },
   "devDependencies": {
     "postcss": "^8",
