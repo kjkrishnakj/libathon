@@ -116,7 +116,7 @@ export default function Home({ books }) {
 
 
       <div className="flex w-full">
-  <div className="w-1/2">
+  <div className="w-1/2 mx-4">
     <Spotlight />
   </div>
   <div className="w-1/2 m-2">
