@@ -160,7 +160,7 @@ const Post = ({ error, book, cat, author }) => {
                         autoPlaySpeed={2000}
                         infinite={true}>
                             {Object.keys(author).map((item) => (
-                                <Link passHref={true} key={author[item]._id} href={`/product/${author[item].slug}`}>
+                                <Link passHref={true} key={author[item]._id} href={`/book/${author[item].slug}`}>
                                     <div className="lg:w-1/2 md:w-1/2 p-2" style={{ width: "6cm", margin: "0.5cm 2cm" }}>
                                         <img src={author[item].img} alt="" className="w-full h-full object-fill" style={{ height: "14rem", width: "11rem", margin: "auto" }} />
                                         <div className="mt-4">
