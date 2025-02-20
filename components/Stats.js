@@ -8,22 +8,22 @@ const Stats = () => {
   const [bookreq, setBookreq] = useState(0);
 
   useEffect(() => {
-    fetch("/api/totalBooks")
+    fetch(`${process.env.NEXT_PUBLIC_HOST}/api/totalBooks`)
       .then((res) => res.json())
       .then((data) => setTotalBooks(data.totalBooks))
       .catch((err) => console.error("Error fetching books count:", err));
 
-    fetch("/api/issuedBooks")
+    fetch(`${process.env.NEXT_PUBLIC_HOST}/api/issuedBooks`)
       .then((res) => res.json())
       .then((data) => setIssuedBooks(data.issuedBooks))
       .catch((err) => console.error("Error fetching issued books count:", err));
 
-    fetch("/api/totalEbooks")
+    fetch(`${process.env.NEXT_PUBLIC_HOST}/api/totalEbooks`)
       .then((res) => res.json())
       .then((data) => setEBooks(data.eBooks))
       .catch((err) => console.error("Error fetching eBooks count:", err));
 
-    fetch("/api/totalBookreq")
+    fetch(`${process.env.NEXT_PUBLIC_HOST}/api/totalBookreq`)
       .then((res) => res.json())
       .then((data) => setBookreq(data.bookreq))
       .catch((err) => console.error("Error fetching book requests count:", err));
