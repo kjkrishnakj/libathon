@@ -2,7 +2,7 @@ import connectDb from "../../middleware/mongoose";
 import Book from "../../models/Book";
 
 export default async function handler(req, res) {
-//   await connectDb();
+  await connectDb();
 
   if (req.method === "GET") {
     const books = await Book.find({});
