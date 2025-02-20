@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-
+import "aos/dist/aos.css";
+import AOS from "aos";
 export default function AdminDonations() {
   const [donations, setDonations] = useState([]);
 
   useEffect(() => {
     fetchDonations();
   }, []);
+  useEffect(() => {
+    AOS.init();
+    
+}, [])
 
   const fetchDonations = async () => {
     const response = await fetch("/api/donate");
@@ -24,7 +29,7 @@ export default function AdminDonations() {
   };
 
   return (
-    <div className="p-6 bg-white shadow-lg rounded-md">
+    <div data-aos="zoom-in" className="p-6 bg-white shadow-lg rounded-md">
       <h2 className="text-xl font-bold mb-4">Manage Book Donations</h2>
       <ul>
         {donations.map((donation) => (
