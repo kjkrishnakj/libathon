@@ -18,18 +18,30 @@ export default function Admin({ books }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/book`, formData);
-    window.location.reload();
+    try {
+      await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/book`, formData);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error adding book:", error);
+    }
   };
 
   const handleUpdate = async (id, qty) => {
-    await axios.put(`${process.env.NEXT_PUBLIC_HOST}/api/book`, { id, availableQty: qty });
-    window.location.reload();
+    try {
+      await axios.put(`${process.env.NEXT_PUBLIC_HOST}/api/book`, { id, availableQty: qty });
+      window.location.reload();
+    } catch (error) {
+      console.error("Error updating book:", error);
+    }
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`${process.env.NEXT_PUBLIC_HOST}/api/book`, { data: { id } });
-    window.location.reload();
+    try {
+      await axios.delete(`${process.env.NEXT_PUBLIC_HOST}/api/book`, { data: { id } });
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
   };
 
   return (
@@ -74,8 +86,17 @@ export default function Admin({ books }) {
   );
 }
 
+// ✅ Fixed getServerSideProps with Error Handling
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`);
-  const books = await res.json();
-  return { props: { books } };
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`);
+    if (!res.ok) {
+      throw new Error(`API returned ${res.status}`);
+    }
+    const books = await res.json();
+    return { props: { books } };
+  } catch (error) {
+    console.error("Error fetching books:", error);
+    return { props: { books: [] } };
+  }
 }
