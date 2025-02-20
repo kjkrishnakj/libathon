@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CountUp from "react-countup";
 
 const Stats = () => {
   const [totalBooks, setTotalBooks] = useState(0);
@@ -21,11 +22,11 @@ const Stats = () => {
       .then((res) => res.json())
       .then((data) => setEBooks(data.eBooks))
       .catch((err) => console.error("Error fetching eBooks count:", err));
-   
-      fetch("/api/totalBookreq")
+
+    fetch("/api/totalBookreq")
       .then((res) => res.json())
       .then((data) => setBookreq(data.bookreq))
-      .catch((err) => console.error("Error fetching eBooks count:", err));
+      .catch((err) => console.error("Error fetching book requests count:", err));
   }, []);
 
   return (
@@ -33,19 +34,27 @@ const Stats = () => {
       <div className="container px-5 py-5 mx-auto">
         <div className="flex flex-wrap -m-4 text-center">
           <div className="p-4 sm:w-1/4 w-1/2">
-            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">{totalBooks}</h2>
+            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+              <CountUp start={0} end={totalBooks} duration={2.5} separator="," />
+            </h2>
             <p className="leading-relaxed">Total Books</p>
           </div>
           <div className="p-4 sm:w-1/4 w-1/2">
-            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">{issuedBooks}</h2>
+            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+              <CountUp start={0} end={issuedBooks} duration={2.5} separator="," />
+            </h2>
             <p className="leading-relaxed">Books Issued</p>
           </div>
           <div className="p-4 sm:w-1/4 w-1/2">
-            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">{eBooks}</h2>
+            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+              <CountUp start={0} end={eBooks} duration={2.5} separator="," />
+            </h2>
             <p className="leading-relaxed">eBooks</p>
           </div>
           <div className="p-4 sm:w-1/4 w-1/2">
-            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">{bookreq}</h2>
+            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+              <CountUp start={0} end={bookreq} duration={2.5} separator="," />
+            </h2>
             <p className="leading-relaxed">Book Requests</p>
           </div>
         </div>
