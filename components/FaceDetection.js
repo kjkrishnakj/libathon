@@ -58,17 +58,41 @@ const FaceDetection = ({ onFaceDetected }) => {
   }, [loading]);
 
   return (
-    <div>
+    <div style={{ 
+      display: "flex", 
+      alignItems: "center", 
+      justifyContent: "center", 
+      height: "80vh", 
+      margin: "0" 
+    }}>
       <video
-        ref={videoRef}
-        autoPlay
-        mutedc
-        width="640"
-        height="480"
-        style={{ display: "block" }}
-      />
-      <canvas ref={canvasRef} width="640" height="480" />
+  ref={videoRef}
+  autoPlay
+  muted
+  width="665"
+  height="480"
+  style={{ 
+    display: "block", 
+    marginRight: "10px",
+    border: "15px solid indigo",
+    borderRadius: "10px" 
+  }}
+/>
+<canvas 
+  ref={canvasRef} 
+  width="320" 
+  height="620" 
+  style={{ 
+    border: "15px solid indigo", 
+    borderRadius: "10px", 
+    backgroundColor: "black" 
+  }} 
+/>
+
     </div>
+    
+    
+  
   );
 };
 

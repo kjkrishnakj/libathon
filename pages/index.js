@@ -108,7 +108,7 @@ export default function Home({ books }) {
         itemClass="carousel-item"
         arrows={false}
       >
-        <div className="h-[30vh] sm:h-[55vh] mt-20 ">
+        <div className="h-[30vh] sm:h-[55vh] mt-0 ">
           <img
             src="/vitclib.jpg"
             alt="image 1"

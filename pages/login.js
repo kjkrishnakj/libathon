@@ -60,6 +60,8 @@
 // export default Login;
 
 import React, { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import FaceDetection from "@/components/FaceDetection";
 import { useRouter } from "next/router";
 
@@ -97,10 +99,14 @@ const Login = () => {
       localStorage.setItem("token", data.token || ""); // Ensure token exists
       localStorage.setItem("rno", data.rno);
       localStorage.setItem("sname", data.sname);
-
+     
       // Redirect on success
       setMessage("Login successful!");
+      toast.success("Logged in successfully 👍", { autoClose: 2000 })
+      setTimeout(() => {
+         
       router.push(`/?rno=${data.rno}`);
+    }, 1000)
     } catch (error) {
       setMessage("Authentication failed");
     }
@@ -108,8 +114,37 @@ const Login = () => {
 
   return (
     <div>
+      <ToastContainer />
+
       <FaceDetection onFaceDetected={setFaceDescriptor} />
-      <button onClick={handleLogin}>Login</button>
+      <div style={{ 
+  display: "flex", 
+  justifyContent: "center", 
+  alignItems: "center", 
+  height: "10vh" 
+}}>
+  <button 
+    onClick={handleLogin} 
+    style={{ 
+      padding: "10px 20px", 
+      fontSize: "16px", 
+      fontWeight: "bold", 
+      color: "white", 
+      backgroundColor: "#007bff", 
+      border: "none", 
+      borderRadius: "5px", 
+      cursor: "pointer", 
+      transition: "0.3s", 
+      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
+    }}
+    onMouseOver={(e) => e.target.style.backgroundColor = "#0056b3"}
+    onMouseOut={(e) => e.target.style.backgroundColor = "#007bff"}
+  >
+    Login
+  </button>
+</div>
+
+
       <p>{message}</p>
     </div>
   );
