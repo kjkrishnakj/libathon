@@ -81,7 +81,7 @@ export default function Admin({ books }) {
 
 
       <header class="text-gray-600 body-font">
-        <div class="container mx-auto bg-gray-300 flex flex-wrap p-3 flex-col md:flex-row items-center">
+        <div class="container mx-auto bg-gray-200 flex flex-wrap p-3 flex-col md:flex-row items-center">
         <nav className="md:ml-auto md:mr-auto flex  flex-wrap items-center text-base justify-center">
   <button
     onClick={() => {

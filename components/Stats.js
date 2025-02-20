@@ -30,7 +30,7 @@ const Stats = () => {
   }, []);
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 bg-gray-200  body-font" style={{borderRadius:"2cm"}}>
       <div className="container px-5 py-5 mx-auto">
         <div className="flex flex-wrap -m-4 text-center">
           <div className="p-4 sm:w-1/4 w-1/2">
