@@ -26,7 +26,7 @@ export default function Admin({ books }) {
     floor: "",
   });
 
-  const [showAddBook, setShowAddBook] = useState(false);
+  const [showAddBook, setShowAddBook] = useState(true);
   const [showSpotlight, setShowSpotlight] = useState(false);
   const [showBookreq, setShowBookreq] = useState(false);
   const [showManageEbook, setShowManageEbook] = useState(false);
