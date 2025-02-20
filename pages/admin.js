@@ -17,7 +17,7 @@ export default function Admin({ books }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+    const response = await fetch(`/api/book`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export default function Admin({ books }) {
   };
 
   const handleUpdate = async (id, qty) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+    const response = await fetch(`/api/book`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export default function Admin({ books }) {
   };
 
   const handleDelete = async (id) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+    const response = await fetch(`/api/book`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ export default function Admin({ books }) {
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`);
+    const res = await fetch(`/api/book`);
     if (!res.ok) {
       throw new Error(`API request failed with status ${res.status}`);
     }
