@@ -92,7 +92,7 @@ const Post = ({ error, book, cat, author }) => {
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Floor: </span>{book.floor}</li>
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Row: </span>{book.row}</li>
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Class number: </span>{book.cnum} </li>
-                            <button onClick={() => { buyNow(slug, book.availableQty, book.title, book._id, book.img) }} disabled={book.availableQty <= 0 ? true : false} className=" ml-10 my-10 disabled:bg-indigo-500 text-white  bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-700 rounded">Issue</button>
+                            <button onClick={() => { buyNow(slug, book.availableQty, book.title, book._id, book.img) }} disabled={book.availableQty <= 0 ? true : false} className="text-xl px-5 ml-10 my-10 disabled:bg-indigo-500 text-white  bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-700 rounded">Issue</button>
 
 
 

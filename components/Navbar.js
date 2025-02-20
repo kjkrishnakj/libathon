@@ -28,7 +28,7 @@ const Navbar = () => {
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>request
           </Link>
           <Link href="/ai" className="hover:text-gray-900 mx-2">
-            <i className="icofont-home" style={{ marginRight: '5px' }}></i>Ask AI
+            <i className="icofont-home" style={{ marginRight: '5px' }}></i>Lib AI
           </Link>
           <Link href="/ebooks" className="hover:text-gray-900 mx-2">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>Ebook
