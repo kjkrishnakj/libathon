@@ -4,6 +4,7 @@
 
 body{
     overflow-x: hidden;
+    /* font-family: "Outfit", sans-serif; */
 }
 
 .scrollbar-hide::-webkit-scrollbar{
@@ -22,9 +23,10 @@ body{
     background: white;
 }
 ::-webkit-scrollbar-thumb{
-    background: #22006b;
+    background: #06B6D4;
     border-radius: 0%;
 }
 ::-webkit-scrollbar-thumb:hover{
-    background: #00246B;
+    /* background: #00246B; */
+    background: #06B6D4
 }
