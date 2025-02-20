@@ -6,6 +6,9 @@ import Link from "next/link";
 import { useState } from "react";
 import React, { useEffect } from 'react';
 import "aos/dist/aos.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
 import AOS from "aos";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +27,35 @@ export default function Home({books}) {
   return (
     <>
 
+
+<Carousel
+        responsive={{
+          superLargeDesktop: { breakpoint: { max: 4000, min: 1024 }, items: 1 },
+          desktop: { breakpoint: { max: 1024, min: 768 }, items: 1 },
+          tablet: { breakpoint: { max: 768, min: 464 }, items: 1 },
+          mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
+        }}
+        autoPlay={true}
+        autoPlaySpeed={2000}
+        infinite={true}
+        className="custom-carousel shadow-lg"
+        containerClass="carousel-container"
+        itemClass="carousel-item"
+        arrows={false}
+      >
+        <div className="h-[30vh] sm:h-[55vh] mt-20 ">
+          <Link href="/product/OnePlus115g">
+            <img
+              src="/vitclib.jpg"
+              alt="image 1"
+              className="h-full w-full object-fill"
+            />
+          </Link>
+        </div>
+        
+
+
+      </Carousel>
 
 <div className="flex flex-wrap -m-4  justify-center" id="catalog"  >
             {Object.keys(books).map((item) => {
@@ -44,6 +76,7 @@ export default function Home({books}) {
             })
             }
           </div>
+
 
 
 
