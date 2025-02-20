@@ -11,15 +11,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 import AOS from "aos";
 import Spotlight from "@/components/Spotlight";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import LeaderBoards from "@/components/LeaderBoards";
 
 
 export default function Home({ books }) {
@@ -50,7 +42,7 @@ export default function Home({ books }) {
   const [searchText, setSearchText] = useState('');
   const [dropdown, setDropdown] = useState(false);
   const [foundbook, setFoundbook] = useState('');
-
+  
 
   const handleSearchSubmit = async (e) => {
     setSearchText(e.target.value);
@@ -119,8 +111,15 @@ export default function Home({ books }) {
 
 
       </Carousel>
-      <Spotlight />
 
+      <div className="flex w-full">
+  <div className="w-1/2">
+    <Spotlight />
+  </div>
+  <div className="w-1/2 m-2">
+    <LeaderBoards />
+  </div>
+</div>
 
       <div className="relative flex flex-col pt-12 sm:pt-6 items-center justify-center w-full">
         <div className="relative w-[12cm] mb-4">

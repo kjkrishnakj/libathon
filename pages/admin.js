@@ -7,6 +7,7 @@ import AdminSpotlight from "@/components/AdminSpotlight";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect, useState } from "react";
+import Stats from "@/components/Stats";
 
 export default function Admin({ books }) {
   useEffect(() => {
@@ -80,8 +81,8 @@ export default function Admin({ books }) {
 
 
       <header class="text-gray-600 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+        <div class="container mx-auto bg-gray-300 flex flex-wrap p-3 flex-col md:flex-row items-center">
+        <nav className="md:ml-auto md:mr-auto flex  flex-wrap items-center text-base justify-center">
   <button
     onClick={() => {
       setShowAddBook(true);
@@ -222,7 +223,7 @@ export default function Admin({ books }) {
 
       <div className="p-6 max-w-4xl mx-auto text-black">
         <h1  data-aos="zoom-in" className="text-2xl text-center font-bold mb-4">Admin Panel</h1>
-
+<Stats/>
         {showAddBook && (
           <>
             <h1 data-aos="zoom-in" className="text-xl font-bold my-4">Add a book</h1>

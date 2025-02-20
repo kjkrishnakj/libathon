@@ -48,7 +48,7 @@ const Navbar = () => {
           <path d="M5 12h14M12 5l7 7-7 7"></path>
         </svg>
       </button> */}
-        <Link href="/login" className="cursor-pointer inline-flex items-center mr-3 bg-gray-100 border-0 py-3 px-4  focus:outline-none hover:bg-gray-200 rounded text-base my-2 md:mt-0">
+        <button className="cursor-pointer inline-flex items-center mr-3 bg-gray-100 border-0 py-3 px-4  focus:outline-none hover:bg-gray-200 rounded text-base my-2 md:mt-0">
          
   
         <svg
@@ -66,7 +66,7 @@ const Navbar = () => {
   </svg>
  
 
-        </Link>
+        </button>
       </div>
     </header>)
 };
