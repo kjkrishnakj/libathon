@@ -1,4 +1,5 @@
 import AdminBookRequests from "@/components/AdminBookRequests";
+import AdminDonations from "@/components/AdminDonations";
 import AdminEbookManager from "@/components/AdminEbook";
 import AdminIssuedBooks from "@/components/AdminIssue";
 import AdminSpotlight from "@/components/AdminSpotlight";
@@ -111,6 +112,7 @@ export default function Admin({ books }) {
       <AdminBookRequests/>
       <AdminEbookManager />
       <AdminIssuedBooks />
+      <AdminDonations />
     </div>
   );
 }

@@ -51,7 +51,7 @@ export default function SearchPage() {
       </button>
       {descriptions.length > 0 && (
         <div style={{ marginTop: '20px' }}>
-          <h2 className="text-xl font-bold">Results </h2>
+          <h2 className="text-xl font-bold">Results</h2>
 
           {descriptions.map((desc, index) => (
             <div className='text-xl' key={index} style={{ marginBottom: '20px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
