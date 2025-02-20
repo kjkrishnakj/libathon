@@ -6,13 +6,22 @@ const handler = async (req, res) => {
         try {
             let issue = new Issue(req.body);
             await issue.save();
-            res.status(200).json({ success: "success", issueId: issue._id });
+            return res.status(200).json({ success: "success", issueId: issue._id });
         } catch (error) {
-            res.status(400).json({ error: error.message });
+            return res.status(400).json({ error: error.message });
         }
-    } else {
-        res.status(400).json({ error: "Invalid request method" });
+    } 
+    
+    if (req.method === 'GET') {
+        try {
+            let issues = await Issue.find({});
+            return res.status(200).json(issues);
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
     }
+
+    return res.status(400).json({ error: "Invalid request method" });
 };
 
 export default connectDb(handler);

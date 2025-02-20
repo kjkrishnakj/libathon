@@ -8,7 +8,6 @@ export default async function handler(req, res) {
     await mongoose();
     const { slug } = req.body;
 
-    // Now update the book and return the updated version
     const book = await Book.findOneAndUpdate(
       { slug },
       { $inc: { availableQty: -1 } },
