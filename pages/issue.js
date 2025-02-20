@@ -27,13 +27,15 @@ const Issue = () => {
         if (storedRno) {
             setSid(storedRno);
         }
+        const user = localStorage.getItem("sname");
+        setSname(user);
     }, []);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        if (name === 'sname') {
-            setSname(value);
-        }
+        // const { name, value } = e.target;
+        // if (name === 'sname') {
+        //     setSname(value);
+        // }
     };
 
     const handleSubmit = async (e) => {
