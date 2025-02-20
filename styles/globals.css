@@ -5,3 +5,25 @@
 body{
     overflow-x: hidden;
 }
+
+.scrollbar-hide::-webkit-scrollbar{
+    display: none;
+}
+
+.scrollbar-hide{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background: white;
+}
+::-webkit-scrollbar-thumb{
+    background: #00246B;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #00246B;
+}
