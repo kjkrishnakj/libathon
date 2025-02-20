@@ -1,70 +1,13 @@
-// import { useState } from "react";
-
-// const AdminSpotlight = () => {
-//   const [message, setMessage] = useState("");
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
-//   const [success, setSuccess] = useState(null);
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     setError(null);
-//     setSuccess(null);
-
-//     try {
-//       const response = await fetch("/api/spotlight", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ message }),
-//       });
-
-//       if (!response.ok) {
-//         throw new Error("Failed to post spotlight message");
-//       }
-
-//       setSuccess("Message posted successfully!");
-//       setMessage("");
-//     } catch (error) {
-//       setError(error.message);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="bg-gray-100 p-6 rounded-md shadow-md my-4">
-//       <h2 className="text-lg font-bold text-gray-800">Post Spotlight Message</h2>
-//       {error && <p className="text-red-500">{error}</p>}
-//       {success && <p className="text-green-500">{success}</p>}
-//       <form onSubmit={handleSubmit} className="mt-4">
-//         <textarea
-//           className="w-full p-2 border rounded-md"
-//           rows="3"
-//           placeholder="Enter spotlight message..."
-//           value={message}
-//           onChange={(e) => setMessage(e.target.value)}
-//           required
-//         ></textarea>
-//         <button
-//           type="submit"
-//           className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-//           disabled={loading}
-//         >
-//           {loading ? "Posting..." : "Post Message"}
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default AdminSpotlight;
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 import { useState, useEffect } from "react";
 
 const AdminSpotlight = () => {
+  useEffect(() => {
+    AOS.init();
+   
+}, [])
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -134,7 +77,7 @@ const AdminSpotlight = () => {
   
 
   return (
-    <div className="bg-gray-100 p-6 rounded-md shadow-md my-4">
+    <div data-aos="zoom-in" className="bg-gray-100 p-6 rounded-md shadow-md my-4">
       <h2 className="text-lg font-bold text-gray-800">Manage Spotlight Messages</h2>
       {error && <p className="text-red-500">{error}</p>}
       {success && <p className="text-green-500">{success}</p>}

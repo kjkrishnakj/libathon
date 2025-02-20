@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
+import "aos/dist/aos.css";
+import AOS from "aos";
 const AdminEbookManager = () => {
     const [ebooks, setEbooks] = useState([]);
     const [name, setName] = useState('');
     const [link, setLink] = useState('');
-
+    useEffect(() => {
+        AOS.init();
+         
+    }, [])
     useEffect(() => {
         fetch('/api/ebooks')
             .then(res => res.json())
@@ -46,7 +50,7 @@ const AdminEbookManager = () => {
     };
 
     return (
-        <div className="p-6 border rounded-lg shadow-lg bg-white">
+        <div data-aos="zoom-in" className="p-6 border rounded-lg shadow-lg bg-white">
             <h2 className="text-xl font-bold mb-4">📖 Manage Ebooks</h2>
 
             {/* Add Ebook Form */}

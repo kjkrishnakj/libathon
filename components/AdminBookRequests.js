@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-
+import "aos/dist/aos.css";
+import AOS from "aos";
 export default function AdminBookRequests() {
   const [requests, setRequests] = useState([]);
-
+  useEffect(() => {
+    AOS.init();
+   
+}, [])
   useEffect(() => {
     const fetchRequests = async () => {
       try {
@@ -44,7 +48,7 @@ export default function AdminBookRequests() {
   };
 
   return (
-    <div className="mt-6 p-4 bg-gray-100 rounded-lg">
+    <div data-aos="zoom-in" className="mt-6 p-4 bg-gray-100 rounded-lg">
       <h2 className="text-xl font-bold mb-4">Book Requests</h2>
       {requests.length === 0 ? <p>No requests found.</p> : requests.map((req) => (
         <div key={req._id} className="p-4 bg-white shadow rounded mb-2 flex justify-between">
