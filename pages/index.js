@@ -119,6 +119,7 @@ export default function Home({ books }) {
 
 
       </Carousel>
+        <h1>Hello</h1>
       <Spotlight />
 
 
