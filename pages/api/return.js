@@ -23,7 +23,7 @@ const handler = async (req, res) => {
 
             if (today > returnDate) {
                 let daysLate = Math.ceil((today - returnDate) / (1000 * 60 * 60 * 24));
-                penaltyAmount = daysLate * 10;
+                penaltyAmount = daysLate;
             }
 
             // Update issue record

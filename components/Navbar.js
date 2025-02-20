@@ -27,11 +27,17 @@ const Navbar = () => {
           <Link href="/requestbook" className="hover:text-gray-900 mx-2">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>request
           </Link>
+          <Link href="/return" className="hover:text-gray-900 mx-2">
+            <i className="icofont-home" style={{ marginRight: '5px' }}></i>return
+          </Link>
           <Link href="/ai" className="hover:text-gray-900 mx-2">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>Lib AI
           </Link>
           <Link href="/ebooks" className="hover:text-gray-900 mx-2">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>Ebook
+          </Link>
+          <Link href="/donate" className="hover:text-gray-900 mx-2">
+            <i className="icofont-home" style={{ marginRight: '5px' }}></i>Donate
           </Link>
           {/* <Link href ="/login"class="mr-5 hover:text-gray-900">Second</Link>
         <Link class="mr-5 hover:text-gray-900">Third</Link>
