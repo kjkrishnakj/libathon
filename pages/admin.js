@@ -9,9 +9,9 @@ export default function Admin({ books }) {
     descr: "",
     img: "",
     availableQty: "",
-    row:"",
-    cnum:"",
-    floor:""
+    row: "",
+    cnum: "",
+    floor: "",
   });
 
   const handleChange = (e) => {
@@ -20,41 +20,68 @@ export default function Admin({ books }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    if (response.ok) {
+    if (!formData.title || !formData.author || !formData.availableQty) {
+      alert("Title, Author, and Quantity are required.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
       window.location.reload();
+    } catch (error) {
+      console.error("Submit Error:", error);
     }
   };
 
   const handleUpdate = async (id, qty) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id, availableQty: qty }),
-    });
-    if (response.ok) {
+    if (qty < 0) return;
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id, availableQty: qty }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Update error: ${response.status}`);
+      }
       window.location.reload();
+    } catch (error) {
+      console.error("Update Error:", error);
     }
   };
 
   const handleDelete = async (id) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id }),
-    });
-    if (response.ok) {
+    if (!window.confirm("Are you sure you want to delete this book?")) return;
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Delete error: ${response.status}`);
+      }
       window.location.reload();
+    } catch (error) {
+      console.error("Delete Error:", error);
     }
   };
 
@@ -67,7 +94,7 @@ export default function Admin({ books }) {
         {Object.keys(formData).map((key) => (
           <input
             key={key}
-            type={key === "availableQ ty" ? "number" : "text"}
+            type={key === "availableQty" ? "number" : "text"}
             name={key}
             placeholder={key}
             value={formData[key]}
@@ -88,9 +115,9 @@ export default function Admin({ books }) {
               <p>Author: {book.author}</p>
               <p>Category: {book.category}</p>
               <p>Available: {book.availableQty}</p>
-              <p>floor: {book.floor}</p>
-              <p>row: {book.row}</p>
-              <p>cnum: {book.cnum}</p>
+              <p>Floor: {book.floor}</p>
+              <p>Row: {book.row}</p>
+              <p>Cnum: {book.cnum}</p>
             </div>
             <div className="space-x-2">
               <button className="bg-green-500 text-white p-2 rounded" onClick={() => handleUpdate(book._id, book.availableQty + 1)}>+1</button>
@@ -113,6 +140,6 @@ export async function getServerSideProps() {
     return { props: { books } };
   } catch (error) {
     console.error("Error fetching books:", error);
-    return { props: { books: [] } }; // Return an empty array or handle the error gracefully
+    return { props: { books: [] } };
   }
 }
