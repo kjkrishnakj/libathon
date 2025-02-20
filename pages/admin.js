@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 
 export default function Admin({ books }) {
   const [formData, setFormData] = useState({
@@ -18,29 +17,41 @@ export default function Admin({ books }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/book`, formData);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    if (response.ok) {
       window.location.reload();
-    } catch (error) {
-      console.error("Error adding book:", error);
     }
   };
 
   const handleUpdate = async (id, qty) => {
-    try {
-      await axios.put(`${process.env.NEXT_PUBLIC_HOST}/api/book`, { id, availableQty: qty });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id, availableQty: qty }),
+    });
+    if (response.ok) {
       window.location.reload();
-    } catch (error) {
-      console.error("Error updating book:", error);
     }
   };
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_HOST}/api/book`, { data: { id } });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    if (response.ok) {
       window.location.reload();
-    } catch (error) {
-      console.error("Error deleting book:", error);
     }
   };
 
@@ -86,17 +97,16 @@ export default function Admin({ books }) {
   );
 }
 
-// ✅ Fixed getServerSideProps with Error Handling
 export async function getServerSideProps() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`);
     if (!res.ok) {
-      throw new Error(`API returned ${res.status}`);
+      throw new Error(`API request failed with status ${res.status}`);
     }
     const books = await res.json();
     return { props: { books } };
   } catch (error) {
     console.error("Error fetching books:", error);
-    return { props: { books: [] } };
+    return { props: { books: [] } }; // Return an empty array or handle the error gracefully
   }
 }
