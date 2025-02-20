@@ -138,12 +138,19 @@ export default function Home({ books }) {
           </form>
         </div>
         {dropdown && (
-          <div className="border rounded-md px-5 w-[16rem] bg-white mt-4">
+          <div className=" rounded-md px-5 w-[16rem] bg-white mt-4">
             <Link passHref={true} href={`/book/${foundbook.slug}`}>
               <img src={foundbook.img} alt="" className="w-full h-full rounded overflow-hidden object-fill" style={{ height: "16rem", width: "16rem" }} />
             </Link>
-            <p className="text-center">{foundbook.author}</p>
-            <p className="text-center">{foundbook.title}</p>
+            <div className="flex justify-between">
+              <p className="text-center">{foundbook.title}</p>
+              <p className="text-center font-bold">Row: {foundbook.row}</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="text-center">{foundbook.author}</p>
+              <p className="text-center font-bold">Class: {foundbook.cnum}</p>
+            </div>
+
           </div>
         )}
       </div>

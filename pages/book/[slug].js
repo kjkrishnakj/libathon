@@ -81,9 +81,9 @@ const Post = ({ error, book, cat, author }) => {
 
                         <p className="leading-relaxed">{book.descr}</p>
 
-                        <div className="flex">
+                        <div className="flex text-right">
                             {book.availableQty <= 0 ? <span className="title-font font-medium text-2xl text-gray-900">Out Of Stock!</span> :
-                                <span className="title-font font-medium text-2xl text-gray-900">{book.author}</span>}
+                                <span className="title-font font-medium text-l text-gray-600" style={{paddingLeft:"10cm"}}>- {book.author}</span>}
 
                         </div>
                         <h1 className="text-xl mt-8 text-gray-700  font-bold  mb-2">Details:</h1>
@@ -92,6 +92,7 @@ const Post = ({ error, book, cat, author }) => {
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Floor: </span>{book.floor}</li>
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Row: </span>{book.row}</li>
                         <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'>Class number: </span>{book.cnum} </li>
+                        <li className=' mt-2 text-gray-900  pl-10'><span className='font-bold'> Quantity: </span>{book.availableQty} </li>
                             <button onClick={() => { buyNow(slug, book.availableQty, book.title, book._id, book.img) }} disabled={book.availableQty <= 0 ? true : false} className="text-xl px-5 ml-10 my-10 disabled:bg-indigo-500 text-white  bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-700 rounded">Issue</button>
 
 
@@ -110,14 +111,14 @@ const Post = ({ error, book, cat, author }) => {
                     More from this
                     <button 
   onClick={enableCat} 
-  className="px-4 ml-2 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
+  className="px-4 text ml-2 py-1    bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
 >
   Category
 </button>
 
 <button 
   onClick={enableAuth} 
-  className="ml-2 px-4 py-2 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition"
+  className="ml-2 px-4 py-1 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition"
 >
   Author
 </button>
