@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     client.close();
 
     if (authenticatedUser) {
-      res.status(200).json({ message: "Authentication successful", username: authenticatedUser.username });
+      res.status(200).json({ message: "Authentication successful", username: authenticatedUser.username,sname:authenticatedUser.sname });
       console.log(authenticatedUser.username);
     } else {
       res.status(401).json({ message: "Authentication failed" });
