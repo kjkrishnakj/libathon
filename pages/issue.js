@@ -5,7 +5,8 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import Head from "next/head";
 import { useRouter } from 'next/router';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Issue = () => {
     const router = useRouter();
     const { bookId, title, img } = router.query;
@@ -57,9 +58,18 @@ const Issue = () => {
             let response = await res.json();
 
             if (response.issueId) {
+                toast.success("Book issues successfully ✅", { autoClose: 2000 })
+
                 console.log("Issue ID:", response.issueId);
                 setIssueid(response.issueId);
-            }
+           
+            const issueButton = document.getElementById("issueButton");
+            if (issueButton) {
+                issueButton.disabled = true;
+                issueButton.textContent = "Thank you";
+                issueButton.style.backgroundColor = "#d1d5db"; // Light gray
+                issueButton.style.cursor = "not-allowed";
+            } }
         } catch (error) {
             console.error("Error submitting issue:", error);
         }
@@ -67,8 +77,9 @@ const Issue = () => {
 
     return (
         <div>
+            <ToastContainer />
             <Head>
-                <title>Lib | Issue</title>
+                <title>BookHive | Issue</title>
             </Head>
             <div className="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="mt-16 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -123,9 +134,10 @@ const Issue = () => {
                         </div>
 
                         <div>
-                            <button type="submit"
+                            <button type="submit" id='issueButton'
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                 Issue
+                                
                             </button>
                         </div>
                     </form>
