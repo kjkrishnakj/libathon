@@ -105,6 +105,8 @@ export async function getServerSideProps() {
     }
     const books = await res.json();
     return { props: { books } };
+    console.log(books);
+    
   } catch (error) {
     console.error("Error fetching books:", error);
     return { props: { books: [] } }; // Return an empty array or handle the error gracefully
