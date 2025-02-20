@@ -22,7 +22,7 @@ export default function Admin({ books }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ ...formData, availableQty: Number(formData.availableQty) }),
     });
     if (response.ok) {
       window.location.reload();
@@ -99,16 +99,14 @@ export default function Admin({ books }) {
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch(`/api/book`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`);
     if (!res.ok) {
       throw new Error(`API request failed with status ${res.status}`);
     }
     const books = await res.json();
     return { props: { books } };
-    console.log(books);
-    
   } catch (error) {
     console.error("Error fetching books:", error);
-    return { props: { books: [] } }; // Return an empty array or handle the error gracefully
+    return { props: { books: [] } };
   }
 }
