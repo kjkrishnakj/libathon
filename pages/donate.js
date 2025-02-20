@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 export default function Donate() {
@@ -31,6 +32,8 @@ export default function Donate() {
   };
 
   return (
+    <>    <Head><title>BookHive | Donate</title></Head>
+
     <div className="p-6 max-w-lg mx-auto bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold text-center mb-4">Donate a Book, Change a Life</h2>
       <p className="text-gray-600 text-center mb-4">
@@ -58,5 +61,6 @@ export default function Donate() {
         Donate Now
       </button>
     </div>
+    </>
   );
 }

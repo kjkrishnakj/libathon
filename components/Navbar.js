@@ -1,8 +1,10 @@
 import Link from "next/link"
+import { useRouter } from "next/router";
 import { useState } from "react";
 // import "icofont/css/icofont.css";
 
 const Navbar = () => {
+  const router = useRouter();
 
 
   return (
@@ -21,9 +23,7 @@ const Navbar = () => {
           <Link href="/login" className="hover:text-gray-900 mx-2">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>login
           </Link>
-          <Link href="/admin" className="hover:text-gray-900 mx-2">
-            <i className="icofont-home" style={{ marginRight: '5px' }}></i>admin
-          </Link>
+     
           <Link href="/requestbook" className="hover:text-gray-900 mx-2">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>request
           </Link>
@@ -48,7 +48,7 @@ const Navbar = () => {
           <path d="M5 12h14M12 5l7 7-7 7"></path>
         </svg>
       </button> */}
-        <button className="cursor-pointer inline-flex items-center mr-3 bg-gray-100 border-0 py-3 px-4  focus:outline-none hover:bg-gray-200 rounded text-base my-2 md:mt-0">
+        <button  onClick={() => router.push(`${process.env.NEXT_PUBLIC_HOST}/admin`)}  className="cursor-pointer inline-flex items-center mr-3 bg-gray-100 border-0 py-3 px-4  focus:outline-none hover:bg-gray-200 rounded text-base my-2 md:mt-0">
          
   
         <svg

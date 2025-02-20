@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Head from "next/head";
 
 const ReturnBook = () => {
     const [name, setName] = useState("");
@@ -39,6 +40,9 @@ const ReturnBook = () => {
     };
 
     return (
+        <>
+    <Head><title>BookHive | Return</title></Head>
+    
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
             <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
                 <h2 className="text-2xl font-bold mb-4">Return Book</h2>
@@ -78,7 +82,7 @@ const ReturnBook = () => {
                 {message && <p className="mt-4 text-center text-red-600">{message}</p>}
                 {penalty !== null && <p className="mt-2 text-center font-bold">Penalty: ₹{penalty}</p>}
             </div>
-        </div>
+        </div></>
     );
 };
 

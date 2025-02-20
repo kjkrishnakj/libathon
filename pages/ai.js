@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import Head from "next/head";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function SearchPage() {
@@ -35,6 +36,10 @@ export default function SearchPage() {
   };
 
   return (
+    <>
+        <Head><title>BookHive | Lib AI</title></Head>
+
+    
     <div style={{ padding: '20px',textAlign:"center" }}>
       <ToastContainer />
       <h1 className='my-4 text-xl font-bold'>Book Description Search</h1>
@@ -61,5 +66,6 @@ export default function SearchPage() {
         </div>
       )}
     </div>
+    </>
   );
 }
