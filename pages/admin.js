@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect, useState } from "react";
 import Stats from "@/components/Stats";
+import Head from "next/head";
 
 export default function Admin({ books }) {
   useEffect(() => {
@@ -78,6 +79,7 @@ export default function Admin({ books }) {
     <>
 
 
+<Head><title>BookHive | Admin</title></Head>
 
 
       <header class="text-gray-600 body-font">

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState } from "react";
 
 const RequestBook = () => {
@@ -31,6 +32,9 @@ const RequestBook = () => {
   };
 
   return (
+    <>
+    <Head><title>BookHive | Request</title></Head>
+    
     <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-md shadow-md">
       <h2 className="text-lg font-bold text-gray-800">Request a Book</h2>
       {message && <p className="mt-2 text-green-500">{message}</p>}
@@ -60,6 +64,7 @@ const RequestBook = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 
