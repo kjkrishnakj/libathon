@@ -20,68 +20,35 @@ export default function Admin({ books }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.title || !formData.author || !formData.availableQty) {
-      alert("Title, Author, and Quantity are required.");
-      return;
-    }
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
+    const response = await fetch(`/api/book`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    if (response.ok) {
       window.location.reload();
-    } catch (error) {
-      console.error("Submit Error:", error);
     }
   };
 
   const handleUpdate = async (id, qty) => {
-    if (qty < 0) return;
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id, availableQty: qty }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Update error: ${response.status}`);
-      }
+    const response = await fetch(`/api/book`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, availableQty: qty }),
+    });
+    if (response.ok) {
       window.location.reload();
-    } catch (error) {
-      console.error("Update Error:", error);
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this book?")) return;
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/book`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Delete error: ${response.status}`);
-      }
+    const response = await fetch(`/api/book`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    if (response.ok) {
       window.location.reload();
-    } catch (error) {
-      console.error("Delete Error:", error);
     }
   };
 
@@ -102,7 +69,9 @@ export default function Admin({ books }) {
             className="p-2 border rounded"
           />
         ))}
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">Add Book</button>
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+          Add Book
+        </button>
       </form>
 
       {/* Book List */}
@@ -120,8 +89,15 @@ export default function Admin({ books }) {
               <p>Cnum: {book.cnum}</p>
             </div>
             <div className="space-x-2">
-              <button className="bg-green-500 text-white p-2 rounded" onClick={() => handleUpdate(book._id, book.availableQty + 1)}>+1</button>
-              <button className="bg-red-500 text-white p-2 rounded" onClick={() => handleDelete(book._id)}>Delete</button>
+              <button
+                className="bg-green-500 text-white p-2 rounded"
+                onClick={() => handleUpdate(book._id, book.availableQty + 1)}
+              >
+                +1
+              </button>
+              <button className="bg-red-500 text-white p-2 rounded" onClick={() => handleDelete(book._id)}>
+                Delete
+              </button>
             </div>
           </div>
         ))}
