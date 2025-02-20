@@ -14,10 +14,10 @@ const LeaderBoards = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Updated topUsers state:", topUsers);
+    // console.log("Updated topUsers state:", topUsers);
   }, [topUsers]); // Log only after state updates
   
-  console.log(" topUsers state:", topUsers)
+  // console.log(" topUsers state:", topUsers)
   return (
     <>
     <section className="bg-gradient-to-r from-blue-400 to-indigo-600 text-white body-font py-1">
