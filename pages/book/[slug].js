@@ -75,50 +75,50 @@ const Post = ({ error, book, cat, author }) => {
 
                     {/* <img data-aos="fade-right" src={book.img} alt="" style={{ height: "28rem", width: "23rem", margin: "3rem 0rem" }}></img> */}
                     <div style={{ position: "relative", display: "inline-block" }}>
-  <img
-    data-aos="fade-right"
-    src={book.img}
-    alt=""
-    style={{
-      height: "28rem",
-      width: "23rem",
-      margin: "3rem 0rem",
-    }}
-  />
-  {book.availableQty <= 0 && (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(255, 255, 255, 0.6)", // Translucent white
-            color: "black",
-        // backgroundColor: "rgba(0, 0, 0, 0.0)",
-        pointerEvents: "none",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <span
-      className='text-center'
-        style={{
-            backgroundColor: "gray", // Translucent white
-            color: "white", // Adjust text color for contrast
-          width:"10cm",
-          padding: "1rem 1rem",
-          fontSize: "1.5rem",
-          fontWeight: "bold",
-        //   borderRadius: "5px",
-        }}
-      >
-        Out of Stock
-      </span>
-    </div>
-  )}
-</div>
+                        <img
+                            data-aos="fade-right"
+                            src={book.img}
+                            alt=""
+                            style={{
+                                height: "28rem",
+                                width: "23rem",
+                                margin: "3rem 0rem",
+                            }}
+                        />
+                        {book.availableQty <= 0 && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    width: "100%",
+                                    height: "100%",
+                                    backgroundColor: "rgba(255, 255, 255, 0.6)", // Translucent white
+                                    color: "black",
+                                    // backgroundColor: "rgba(0, 0, 0, 0.0)",
+                                    pointerEvents: "none",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <span
+                                    className='text-center'
+                                    style={{
+                                        backgroundColor: "gray", // Translucent white
+                                        color: "white", // Adjust text color for contrast
+                                        width: "10cm",
+                                        padding: "1rem 1rem",
+                                        fontSize: "1.5rem",
+                                        fontWeight: "bold",
+                                        //   borderRadius: "5px",
+                                    }}
+                                >
+                                    Out of Stock
+                                </span>
+                            </div>
+                        )}
+                    </div>
 
 
 
@@ -162,34 +162,35 @@ const Post = ({ error, book, cat, author }) => {
 
             <div className="container px-5 py-12 mx-auto">
 
-                <h1 className="text-2xl font-bold mt mb-2">
-                    More from this
+                <div className="font-bold mt mb-2 flex items-center">
+                    <h1 className="text-xl mr-4">More from this : </h1>
+
                     <button
                         onClick={enableCat}
-                        className="px-4 text ml-2 py-1    bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
+                        className="text-white p-2 rounded bg-blue-500 mx-2"
                     >
                         Category
                     </button>
 
                     <button
                         onClick={enableAuth}
-                        className="ml-2 px-4 py-1 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition"
+                        className="text-white p-2 rounded bg-yellow-500 mx-2"
                     >
                         Author
                     </button>
+                </div>
 
-                </h1>
 
 
                 {!authe ? (
-                    
+
                     <Carousel responsive={{
                         superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 6 }, // Changed to 6
                         desktop: { breakpoint: { max: 1200, min: 1024 }, items: 6 }, // Changed to 6
                         laptop: { breakpoint: { max: 1024, min: 900 }, items: 4 }, // Optional: Adjust if needed
                         tablet: { breakpoint: { max: 900, min: 768 }, items: 2 },
                         mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
-                      }}
+                    }}
 
                         autoPlay={true}
                         autoPlaySpeed={2000}
@@ -208,16 +209,16 @@ const Post = ({ error, book, cat, author }) => {
                     </Carousel>
                 ) : (
                     <Carousel
-  responsive={{
-    superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 6 }, // Changed to 6
-    desktop: { breakpoint: { max: 1200, min: 1024 }, items: 6 }, // Changed to 6
-    laptop: { breakpoint: { max: 1024, min: 900 }, items: 4 }, // Optional: Adjust if needed
-    tablet: { breakpoint: { max: 900, min: 768 }, items: 2 },
-    mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
-  }}
+                        responsive={{
+                            superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 6 }, // Changed to 6
+                            desktop: { breakpoint: { max: 1200, min: 1024 }, items: 6 }, // Changed to 6
+                            laptop: { breakpoint: { max: 1024, min: 900 }, items: 4 }, // Optional: Adjust if needed
+                            tablet: { breakpoint: { max: 900, min: 768 }, items: 2 },
+                            mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
+                        }}
 
 
-                  
+
                         autoPlay={true}
                         autoPlaySpeed={2000}
                         infinite={true}>
