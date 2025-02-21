@@ -166,7 +166,7 @@ export default function Home({ books }) {
 
 
           return <Link passHref={true} key={books[item]._id} href={`${process.env.NEXT_PUBLIC_HOST}/book/${books[item].slug}`}>
-            <div className=" lg:w-1/2 py-10  md:w-1/2 p-2" style={{ width: "8cm", margin: "0.5cm" }}>
+            <div className=" lg:w-1/2 py-10  md:w-1/2 p-2 transform transition-transform duration-300 ease-in-out hover:scale-110" style={{ width: "8cm", margin: "0.5cm" }}>
               <img src={books[item].img} data-aos="zoom-in" alt="" className="w-full h-full rounded overflow-hidden transform transition-transform duration-300 ease-in-out hover:scale-105 object-fill" style={{ height: "18rem", width: "14rem" }} />
               <h3 className="text-gray-500 text-s  tracking-widest title-font my-1">{books[item].category}</h3>
               <h2 className="text-gray-900 title-font text-lg font-medium">{books[item].title}</h2>
