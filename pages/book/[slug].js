@@ -182,12 +182,14 @@ const Post = ({ error, book, cat, author }) => {
 
 
                 {!authe ? (
+                    
                     <Carousel responsive={{
-                        superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 3 },
-                        desktop: { breakpoint: { max: 1200, min: 1024 }, items: 3 },
-                        tablet: { breakpoint: { max: 1024, min: 768 }, items: 2 },
+                        superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 6 }, // Changed to 6
+                        desktop: { breakpoint: { max: 1200, min: 1024 }, items: 6 }, // Changed to 6
+                        laptop: { breakpoint: { max: 1024, min: 900 }, items: 4 }, // Optional: Adjust if needed
+                        tablet: { breakpoint: { max: 900, min: 768 }, items: 2 },
                         mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
-                    }}
+                      }}
 
                         autoPlay={true}
                         autoPlaySpeed={2000}
@@ -205,13 +207,17 @@ const Post = ({ error, book, cat, author }) => {
                         ))}
                     </Carousel>
                 ) : (
-                    <Carousel responsive={{
-                        superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 4 },
-                        desktop: { breakpoint: { max: 1200, min: 1024 }, items: 4 },
-                        tablet: { breakpoint: { max: 1024, min: 768 }, items: 2 },
-                        mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
-                    }}
+                    <Carousel
+  responsive={{
+    superLargeDesktop: { breakpoint: { max: 4000, min: 1200 }, items: 6 }, // Changed to 6
+    desktop: { breakpoint: { max: 1200, min: 1024 }, items: 6 }, // Changed to 6
+    laptop: { breakpoint: { max: 1024, min: 900 }, items: 4 }, // Optional: Adjust if needed
+    tablet: { breakpoint: { max: 900, min: 768 }, items: 2 },
+    mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
+  }}
 
+
+                  
                         autoPlay={true}
                         autoPlaySpeed={2000}
                         infinite={true}>
