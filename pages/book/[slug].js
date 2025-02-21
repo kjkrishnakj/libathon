@@ -75,31 +75,51 @@ const Post = ({ error, book, cat, author }) => {
 
                     {/* <img data-aos="fade-right" src={book.img} alt="" style={{ height: "28rem", width: "23rem", margin: "3rem 0rem" }}></img> */}
                     <div style={{ position: "relative", display: "inline-block" }}>
-  <img 
-    data-aos="fade-right" 
-    src={book.img} 
-    alt="" 
-    style={{ 
-      height: "28rem", 
-      width: "23rem", 
+  <img
+    data-aos="fade-right"
+    src={book.img}
+    alt=""
+    style={{
+      height: "28rem",
+      width: "23rem",
       margin: "3rem 0rem",
-    //   filter: book.availableQty <= 0 ? "grayscale(100%)" : "none"
-    }} 
+    }}
   />
   {book.availableQty <= 0 && (
-    <div 
-      style={{ 
-        position: "absolute", 
-        top: 0, 
-        left: 0, 
-        width: "100%", 
-        height: "100%", 
-        backgroundColor: "rgba(0, 0, 0, 0.5)", 
-        pointerEvents: "none" 
-      }} 
-    />
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(255, 255, 255, 0.5)", // Translucent white
+            color: "black",
+        // backgroundColor: "rgba(0, 0, 0, 0.0)",
+        pointerEvents: "none",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <span
+      className='text-center'
+        style={{
+            backgroundColor: "gray", // Translucent white
+            color: "white", // Adjust text color for contrast
+          width:"10cm",
+          padding: "1rem 1rem",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+        //   borderRadius: "5px",
+        }}
+      >
+        Out of Stock
+      </span>
+    </div>
   )}
 </div>
+
 
 
                     <div data-aos="fade-left" className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -110,8 +130,8 @@ const Post = ({ error, book, cat, author }) => {
                         <p className="leading-relaxed">{book.descr}</p>
 
                         <div className="flex text-right">
-                            {book.availableQty <= 0 ? <span className="title-font font-medium text-2xl text-gray-900">Out Of Stock!</span> :
-                                <span className="title-font font-medium text-l text-gray-600" style={{ paddingLeft: "10cm" }}>- {book.author}</span>}
+
+                            <span className="title-font font-medium text-l text-gray-600" style={{ paddingLeft: "10cm" }}>- {book.author}</span>
 
                         </div>
                         <h1 className="text-xl mt-8 text-gray-700  font-bold  mb-2">Details:</h1>
