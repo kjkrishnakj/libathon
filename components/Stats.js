@@ -32,33 +32,34 @@ const Stats = () => {
   return (
     <section className="text-gray-600 bg-gray-200  body-font" style={{borderRadius:"2cm"}}>
       <div className="container px-5 py-5 mx-auto">
-        <div className="flex flex-wrap -m-4 text-center">
-          <div className="p-4 sm:w-1/4 w-1/2">
-            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-              <CountUp start={0} end={totalBooks} duration={2.5} separator="," />
-            </h2>
-            <p className="leading-relaxed">Total Books</p>
-          </div>
-          <div className="p-4 sm:w-1/4 w-1/2">
-            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-              <CountUp start={0} end={issuedBooks} duration={2.5} separator="," />
-            </h2>
-            <p className="leading-relaxed">Books Issued</p>
-          </div>
-          <div className="p-4 sm:w-1/4 w-1/2">
-            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-              <CountUp start={0} end={eBooks} duration={2.5} separator="," />
-            </h2>
-            <p className="leading-relaxed">eBooks</p>
-          </div>
-          <div className="p-4 sm:w-1/4 w-1/2">
-            <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-              <CountUp start={0} end={bookreq} duration={2.5} separator="," />
-            </h2>
-            <p className="leading-relaxed">Book Requests</p>
-          </div>
-        </div>
-      </div>
+  <div className="flex flex-wrap -m-4 text-center">
+    <div className="p-4 sm:w-1/4 w-1/2">
+      <h2 className="title-font font-medium sm:text-4xl text-3xl text-red-600">
+        <CountUp start={0} end={totalBooks} duration={2.5} separator="," />
+      </h2>
+      <p className="leading-relaxed text-red-600">Total Books</p>
+    </div>
+    <div className="p-4 sm:w-1/4 w-1/2">
+      <h2 className="title-font font-medium sm:text-4xl text-3xl text-green-600">
+        <CountUp start={0} end={issuedBooks} duration={2.5} separator="," />
+      </h2>
+      <p className="leading-relaxed text-green-600">Books Issued</p>
+    </div>
+    <div className="p-4 sm:w-1/4 w-1/2">
+      <h2 className="title-font font-medium sm:text-4xl text-3xl text-blue-600">
+        <CountUp start={0} end={eBooks} duration={2.5} separator="," />
+      </h2>
+      <p className="leading-relaxed text-blue-600">eBooks</p>
+    </div>
+    <div className="p-4 sm:w-1/4 w-1/2">
+      <h2 className="title-font  font-medium sm:text-4xl text-3xl text-yellow-500">
+        <CountUp start={0} end={bookreq} duration={2.5} separator="," />
+      </h2>
+      <p className="leading-relaxed  text-yellow-600">Book Requests</p>
+    </div>
+  </div>
+</div>
+
     </section>
   );
 };
