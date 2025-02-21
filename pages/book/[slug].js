@@ -93,7 +93,7 @@ const Post = ({ error, book, cat, author }) => {
         left: 0,
         width: "100%",
         height: "100%",
-        backgroundColor: "rgba(255, 255, 255, 0.5)", // Translucent white
+        backgroundColor: "rgba(255, 255, 255, 0.6)", // Translucent white
             color: "black",
         // backgroundColor: "rgba(0, 0, 0, 0.0)",
         pointerEvents: "none",
