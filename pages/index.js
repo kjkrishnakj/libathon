@@ -94,7 +94,7 @@ export default function Home({ books }) {
           tablet: { breakpoint: { max: 768, min: 464 }, items: 1 },
           mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
         }}
-        autoPlay={true}
+        autoPlay={false}
         autoPlaySpeed={2000}
         infinite={true}
         className="custom-carousel shadow-lg"
