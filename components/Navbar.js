@@ -9,7 +9,7 @@ const Navbar = () => {
 
 
   return (
-    <header className="text-white body-font bg-cyan-500">
+    <header className="text-white body-font bg-cyan-600">
       <div className="container mx-auto flex flex-wrap p-1 flex-col md:flex-row items-center py-2" style={{textAlign:"center", height:"2.5cm"}}>
         <Link href="/" className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-10 h-10 text-white p-2 rounded-full" viewBox="0 0 24 24" style={{background:"#37AFE1"}}>

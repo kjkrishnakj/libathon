@@ -94,7 +94,7 @@ const AdminSpotlight = () => {
         ></textarea>
         <button
           type="submit"
-          className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+          className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 transition"
           disabled={loading}
         >
           {loading ? "Posting..." : "Post Message"}

@@ -44,10 +44,10 @@ const ReturnBook = () => {
     <Head><title>BookHive | Return</title></Head>
     
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <div className="bg-cyan-600 bg-opacity-40 backdrop-blur-xl  p-6 rounded-lg shadow-lg w-full max-w-md">
                 <h2 className="text-2xl font-bold mb-4">Return Book</h2>
 
-                <label className="block mb-2 text-gray-600">Name</label>
+                <label className="block mb-2  text-gray-800">Name</label>
                 <input
                     type="text"
                     value={name}
@@ -55,7 +55,7 @@ const ReturnBook = () => {
                     className="w-full p-2 mb-4 border rounded bg-gray-200"
                 />
 
-                <label className="block mb-2 text-gray-600">Reg No</label>
+                <label className="block mb- text-gray-800">Reg No</label>
                 <input
                     type="text"
                     value={regNo}
@@ -63,7 +63,7 @@ const ReturnBook = () => {
                     className="w-full p-2 mb-4 border rounded bg-gray-200"
                 />
 
-                <label className="block mb-2 text-gray-600">Book ID</label>
+                <label className="block mb- text-gray-800">Book ID</label>
                 <input
                     type="text"
                     value={bookId}
@@ -74,7 +74,7 @@ const ReturnBook = () => {
 
                 <button
                     onClick={handleReturn}
-                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                    className="w-full bg-cyan-600 text-white py-2 rounded hover:bg-blue-700 transition"
                 >
                     Return Book
                 </button>

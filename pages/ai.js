@@ -124,11 +124,11 @@ export default function SearchPage() {
           placeholder="Enter book title or topic"
           style={{ width: '600px', textAlign: 'center', padding: '10px', borderRadius: '10px', border: "2px solid black", marginRight: '10px' }}
         />
-        <button className='bg-indigo-600' onClick={handleSearch} style={{ padding: '10px', color: "white", borderRadius: "10px" }}>
+        <button className='bg-cyan-600 ' onClick={handleSearch} style={{ padding: '10px', color: "white", borderRadius: "10px" }}>
           Search
         </button>
         {descriptions.length > 0 && (
-          <div style={{ marginTop: '20px' }}>
+          <div className='bg-cyan-600 bg-opacity-40 backdrop-blur-xl  p-6 rounded-lg shadow-lg' style={{ marginTop: '20px' }}>
             <h2 className="text-xl font-bold">Results</h2>
             {descriptions.map((desc, index) => (
               <div className='text-xl' key={index} style={{ marginBottom: '20px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>

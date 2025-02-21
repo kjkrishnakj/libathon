@@ -34,9 +34,9 @@ export default function Donate() {
   return (
     <>    <Head><title>BookHive | Donate</title></Head>
 
-    <div className="p-6 max-w-lg mx-auto bg-white shadow-md rounded-lg">
+    <div className="p-6 max-w-lg bg-cyan-600 bg-opacity-40 backdrop-blur-xl my-12 p-6 rounded-lg shadow-lg mx-auto bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold text-center mb-4">Donate a Book, Change a Life</h2>
-      <p className="text-gray-600 text-center mb-4">
+      <p className="text-gray-800 text-center mb-4">
         Your book donation can light up someone's world. Help spread knowledge and support education!
       </p>
 
@@ -57,7 +57,7 @@ export default function Donate() {
         
       />
 
-      <button onClick={handleDonate} className="w-full bg-blue-600 text-white py-2 rounded-md">
+      <button onClick={handleDonate} className="w-full bg-cyan-600  text-white py-2 rounded-md">
         Donate Now
       </button>
     </div>

@@ -166,7 +166,7 @@ const Post = ({ error, book, cat, author }) => {
                     More from this
                     <button
                         onClick={enableCat}
-                        className="px-4 text ml-2 py-1    bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
+                        className="px-4 text ml-2 py-1    bg-cyan-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
                     >
                         Category
                     </button>
