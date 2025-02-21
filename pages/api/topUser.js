@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       return res.status(404).json({ message: "No data found" });
     }
 
-    console.log("Top 3 Users:", topUsers); // Log all 3 users
+    // console.log("Top 3 Users:", topUsers); // Log all 3 users
 
     res.status(200).json(topUsers);
   } catch (error) {
