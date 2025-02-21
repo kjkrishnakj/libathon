@@ -25,7 +25,7 @@ export default function AdminIssuedBooks() {
                 <thead>
                     <tr className="bg-gray-200">
                         <th className="border px-4 py-2">Title</th>
-                        <th className="border px-4 py-2">Student Name</th>
+                        <th className="border px-4 py-2">Student ID</th>
                         <th className="border px-4 py-2">Issue Date</th>
                         <th className="border px-4 py-2">Return Date</th>
                         <th className="border px-4 py-2">Penalty</th>
@@ -36,7 +36,7 @@ export default function AdminIssuedBooks() {
                     {issues.map((issue) => (
                         <tr key={issue._id} className="border">
                             <td className="border px-4 py-2">{issue.title}</td>
-                            <td className="border px-4 py-2">{issue.sname}</td>
+                            <td className="border px-4 py-2">{issue.sid.toUpperCase()}</td>
                             <td className="border px-4 py-2">{new Date(issue.idate).toLocaleDateString()}</td>
                             <td className="border px-4 py-2">{new Date(issue.rdate).toLocaleDateString()}</td>
                             <td className="border px-4 py-2">{issue.penalty}</td>
