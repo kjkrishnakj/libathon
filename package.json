@@ -26,6 +26,7 @@
     "react-dom": "^19.0.0",
     "react-multi-carousel": "^2.8.5",
     "react-toastify": "^11.0.3",
+    "react-top-loading-bar": "^3.0.2",
     "recharts": "^2.15.1"
   },
   "devDependencies": {
