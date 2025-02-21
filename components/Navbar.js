@@ -18,15 +18,8 @@ const Navbar = () => {
           <span className="ml-3 text-xl">BookHive</span>
         </Link>
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-          <Link href="/signup" className="hover:text-gray-900 mx-3 lg:text-xl">
-            <i className="icofont-home" style={{ marginRight: '5px' }}></i>Sign-up
-          </Link>
           <Link href="/login" className="hover:text-gray-900 mx-3 lg:text-xl">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>Login
-          </Link>
-     
-          <Link href="/requestbook" className="hover:text-gray-900 mx-3 lg:text-xl">
-            <i className="icofont-home" style={{ marginRight: '5px' }}></i>Request
           </Link>
           <Link href="/return" className="hover:text-gray-900 mx-3 lg:text-xl">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>Return
@@ -36,6 +29,9 @@ const Navbar = () => {
           </Link>
           <Link href="/ebooks" className="hover:text-gray-900 mx-3 lg:text-xl">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>Ebook
+          </Link>
+          <Link href="/requestbook" className="hover:text-gray-900 mx-3 lg:text-xl">
+            <i className="icofont-home" style={{ marginRight: '5px' }}></i>Request
           </Link>
           <Link href="/donate" className="hover:text-gray-900 mx-3 lg:text-xl">
             <i className="icofont-home" style={{ marginRight: '5px' }}></i>Donate
