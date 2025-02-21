@@ -36,6 +36,7 @@ export default function App({ Component, pageProps }) {
 
     progress={progress}
     waitingTime={200}
+    height={4}
     onLoaderFinished={() => setProgress(0)}
     />
     <div className="app-container">

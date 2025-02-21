@@ -8,7 +8,6 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect, useState } from "react";
 import Stats from "@/components/Stats";
-import Head from "next/head";
 
 export default function Admin({ books }) {
   useEffect(() => {
@@ -79,11 +78,10 @@ export default function Admin({ books }) {
     <>
 
 
-<Head><title>BookHive | Admin</title></Head>
 
 
-      <header className="text-gray-600 body-font">
-        <div className="container mx-auto bg-gray-200 flex flex-wrap p-3 flex-col md:flex-row items-center">
+      <header class="text-gray-600 body-font">
+        <div class="container mx-auto bg-gray-200 flex flex-wrap p-3 flex-col md:flex-row items-center">
         <nav className="md:ml-auto md:mr-auto flex  flex-wrap items-center text-base justify-center">
   <button
     onClick={() => {
