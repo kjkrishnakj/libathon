@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 // const outfit = Outfit({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export default function App({ Component, pageProps }) {
-  const [rnum, setRnum] = useState('');  
+  const [rnum, setRnum] = useState('');
 
   const buyNow = (itemCode, qty, price, name) => {
     qty = qty - 1;
@@ -15,10 +15,11 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
-    <div >
-    
+    <div className="app-container">
       <Navbar />
-      <Component rnum={rnum} {...pageProps} /> 
+      <main className="main-content">
+        <Component rnum={rnum} {...pageProps} />
+      </main>
       <Footer />
     </div>
   );

@@ -7,6 +7,24 @@ body{
     /* font-family: "Outfit", sans-serif; */
 }
 
+#root, .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1; /* Pushes footer down */
+  }
+  
+  .footer {
+    width: 100%;
+    background-color: #333; /* Example background */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+
 .scrollbar-hide::-webkit-scrollbar{
     display: none;
 }
