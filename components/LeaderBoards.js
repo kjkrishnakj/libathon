@@ -27,26 +27,20 @@ const LeaderBoards = () => {
         {topUsers.length > 0 ? (
           <div className="bg-white p-6 mb-6 shadow-lg">
               <ResponsiveContainer width="100%" height={200}>
-  <BarChart data={topUsers} layout="vertical">
-    <defs>
-      <linearGradient id="cyanGradient" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#06B6D4" /> {/* cyan-500 */}
-        <stop offset="100%" stopColor="#0E7490" /> {/* darker cyan */}
-      </linearGradient>
-    </defs>
-    <XAxis type="number" hide tick={{ fill: "#4F46E5", fontSize: 14, fontWeight: "bold" }} />
-    <YAxis
-      dataKey="_id"
-      type="category"
-      width={100}
-      tickFormatter={(id) => id.toUpperCase()}
-      tick={{ fill: "#323", fontSize: 14, fontWeight: "bold" }}
-    />
-    <Tooltip cursor={{ fill: "rgba(79,70,229,0.1)" }} />
-    <Bar dataKey="count" fill="url(#cyanGradient)" barSize={45} /> {/* Gradient applied */}
-  </BarChart>
-</ResponsiveContainer>
-
+                <BarChart data={topUsers} layout="vertical">
+                  
+                  <XAxis type="number" hide tick={{ fill: "#06B6D4", fontSize: 14, fontWeight: "bold" }} />
+                  <YAxis
+                    dataKey="_id"
+                    type="category"
+                    width={100}
+                    tickFormatter={(id) => id.toUpperCase()}
+                    tick={{ fill: "#323", fontSize: 14, fontWeight: "bold" }}
+                  />
+                  <Tooltip cursor={{ fill: "rgba(79,70,229,0.1)" }} />
+                  <Bar dataKey="count" fill="#06B6D4" barSize={45} />
+                </BarChart>
+              </ResponsiveContainer>
           </div>
         ) : (
           <p className="text-lg font-semibold animate-pulse">Loading...</p>
