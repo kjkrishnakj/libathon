@@ -38,6 +38,7 @@ export default function App({ Component, pageProps }) {
     waitingTime={200}
     height={4}
     onLoaderFinished={() => setProgress(0)}
+    style={{ borderRadius: "15px" }}
     />
     <div className="app-container">
       <Navbar />
