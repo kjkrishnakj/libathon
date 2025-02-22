@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import connectDb from "@/middleware/mongoose";
 
 export default async function handler(req, res) {
-  await connectDb();
+  // await connectDb();
 
   if (req.method === "GET") {
     // Fetch all spotlight messages
