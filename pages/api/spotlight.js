@@ -1,9 +1,19 @@
 import Spotlight from "@/models/Spotlight";
 import mongoose from "mongoose";
 import connectDb from "@/middleware/mongoose";
+import Cors from "cors";
+
+// Initialize CORS
+const cors = Cors({
+  origin: [process.env.NEXT_PUBLIC_HOST, "https://libathon.vercel.app/"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+});
 
 export default async function handler(req, res) {
   // await connectDb();
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGO_URI)
+  }
 
   if (req.method === "GET") {
     // Fetch all spotlight messages
