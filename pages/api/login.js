@@ -1,5 +1,12 @@
 import connectDb from "../../middleware/mongoose";
 import User from "../../models/User";
+import Cors from "cors";
+
+// Initialize CORS
+const cors = Cors({
+  origin: [process.env.NEXT_PUBLIC_HOST, "https://libathon.vercel.app/"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+});
 var jwt = require('jsonwebtoken');
 const handler = async (req, res) => {
     if (req.method == 'POST') {

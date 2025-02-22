@@ -1,5 +1,12 @@
 import mongoose from "../../middleware/mongoose"; // Ensure you have a MongoDB connection file
 import Book from "../../models/Book"; // Import your Mongoose model
+import Cors from "cors";
+
+// Initialize CORS
+const cors = Cors({
+  origin: [process.env.NEXT_PUBLIC_HOST, "https://libathon.vercel.app/"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+});
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method Not Allowed" });

@@ -1,6 +1,13 @@
 import connectDb from "../../middleware/mongoose";
 import Book from "../../models/Book";
 import mongoose from "mongoose";
+import Cors from "cors";
+
+// Initialize CORS
+const cors = Cors({
+  origin: [process.env.NEXT_PUBLIC_HOST, "https://libathon.vercel.app/"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+});
 
 export default async function handler(req, res) {
   try {

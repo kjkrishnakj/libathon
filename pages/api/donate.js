@@ -1,5 +1,12 @@
 import connectDb from "@/middleware/mongoose";
 import Donation from "../../models/Donation";
+import Cors from "cors";
+
+// Initialize CORS
+const cors = Cors({
+  origin: [process.env.NEXT_PUBLIC_HOST, "https://libathon.vercel.app/"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+});
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
