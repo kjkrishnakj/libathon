@@ -1,0 +1,54 @@
+/* Custom NProgress styles to match BookHive theme */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8, #3b82f6) !important;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 120px;
+  height: 100%;
+  box-shadow: 0 0 15px #2563eb, 0 0 8px #2563eb;
+  opacity: 1.0;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove spinner */
+#nprogress .spinner {
+  display: none !important;
+}
+
+/* Smooth animations */
+#nprogress .bar {
+  transition: width 0.4s ease, opacity 0.4s ease;
+}
+
+/* Pulse effect */
+@keyframes nprogress-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#nprogress .bar {
+  animation: nprogress-pulse 1.5s ease-in-out infinite;
+}

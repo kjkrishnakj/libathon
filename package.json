@@ -25,6 +25,8 @@
     "mongodb": "^6.13.0",
     "mongoose": "^8.10.1",
     "next": "15.1.7",
+    "nprogress": "^0.2.0",
+    "openai": "^5.11.0",
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",

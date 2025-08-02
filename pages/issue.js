@@ -252,11 +252,11 @@ const Issue = () => {
             <Card className="bg-white/80 border-gray-200 backdrop-blur-sm shadow-lg mb-8">
               <CardContent className="p-6">
                 <div className="flex items-center gap-6">
-                  <img
+                  {/* <img
                     src={img || "/placeholder.svg"}
                     alt="Book Cover"
                     className="w-24 h-32 object-cover rounded-lg shadow-md"
-                  />
+                  /> */}
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
                     <p className="text-gray-600">You're about to borrow this book</p>
