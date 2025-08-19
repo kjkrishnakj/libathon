@@ -30,7 +30,7 @@ Built for **Libathon 2025**, this project aims to blend **AI**, **modern web tec
 | **Auth**      | JSON Web Tokens (JWT), bcrypt.js |
 | **State**     | React Hooks (useState, useEffect), Context API |
 | **Deployment**| Vercel |
-| **Image Hosting** | Cloudinary or local `public/` folder |
+| **Image Hosting** | MongoDB |
 | **Routing**   | Next.js App Router with Dynamic Routes |
 | **Form & Validation** | HTML Forms, Native Validations, Optional Zod |
 | **Dev Tools** | ESLint, Prettier, GitHub |
