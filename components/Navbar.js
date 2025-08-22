@@ -121,8 +121,8 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-3 border-t border-gray-200">
-            <Card className="bg-white/90 border-gray-200 backdrop-blur-sm shadow-lg">
+          <div className="md:hidden py-3 border-t border-gray-200 ">
+            <Card className="bg-white/90 border-gray-200 backdrop-blur-sm  shadow-lg">
               <div className="p-3 space-y-1">
                 {navItems.map((item) => {
                   const IconComponent = item.icon
@@ -131,12 +131,12 @@ const Navbar = () => {
                     <Link key={item.href} href={item.href}>
                       <Button
                         variant="ghost"
-                        className={`w-full justify-start px-3 py-2 text-left transition-all duration-200 rounded-md h-8
+                        className={`w-full justify-start  px-3 py-2 text-left transition-all duration-200 rounded-md h-8
                           ${isActive
                             ? "bg-blue-100 text-blue-700 border border-blue-200"
                             : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                           }
-                          ${item.href === "/ai" ? "bg-gradient-to-r from-purple-50 to-blue-50" : ""}`}
+                          ${item.href === "/ai" ? "bg-gradient-to-r  from-purple-50 to-blue-50" : ""}`}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         <IconComponent className={`w-4 h-4 mr-3 ${item.href === "/ai" ? "text-purple-600" : ""}`} />
@@ -144,7 +144,7 @@ const Navbar = () => {
                         {item.href === "/ai" && (
                           <Badge
                             variant="secondary"
-                            className="ml-auto bg-purple-100 text-purple-700 border-purple-200 text-xs"
+                            className="ml-auto bg-purple-100  text-purple-700 border-purple-200 text-xs"
                           >
                             New
                           </Badge>
@@ -175,6 +175,18 @@ const Navbar = () => {
                     <LogOut className="w-4 h-4 mr-3" />
                     <span className="font-medium text-sm">Logout</span>
                   </Button>
+                  <Button
+  onClick={() => {
+    router.push(`${process.env.NEXT_PUBLIC_HOST}/admin`);
+    setIsMobileMenuOpen(false);
+  }}
+  variant="ghost"
+  className="w-full justify-start text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md px-3 py-2 transition-all duration-200 h-8"
+>
+  <User className="w-4 h-4 mr-3" />
+  <span className="font-medium text-sm">Admin Panel</span>
+</Button>
+
                 </div>
               </div>
             </Card>
