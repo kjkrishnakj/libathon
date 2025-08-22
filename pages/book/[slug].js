@@ -293,6 +293,12 @@ const Post = ({ error, book, cat, author }) => {
   const [showCategory, setShowCategory] = useState(true)
 
   const buyNow = async (slug, availableQty, title, id, img) => {
+    
+    const token = localStorage.getItem("token"); // or any auth key you use
+  if (!token) {
+    router.push("/login"); // redirect to login if not logged in
+    return;
+  }
     router.push(`${process.env.NEXT_PUBLIC_HOST}/issue?bookId=${id}&img=${img}&title=${title}&slug=${slug}`)
   }
 
