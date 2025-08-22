@@ -1,211 +1,118 @@
-// import React, { useEffect, useRef, useState } from "react";
-// import * as faceapi from "face-api.js";
+"use client"
 
-// const FaceDetection = ({ onFaceDetected }) => {
-//   const videoRef = useRef();
-//   const canvasRef = useRef();
-//   const [loading, setLoading] = useState(true);
+import { useRef, useEffect, useState } from "react"
+import * as faceapi from "face-api.js"
 
-//   useEffect(() => {
-//     const loadModels = async () => {
-//       await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
-//       await faceapi.nets.faceLandmark68Net.loadFromUri("/models");
-//       await faceapi.nets.faceRecognitionNet.loadFromUri("/models");
-//       await faceapi.nets.ssdMobilenetv1.loadFromUri("/models");
-//       setLoading(false);
-//     };
-//     loadModels();
-//   }, []);
+const FaceDetection = ({ onFaceDetected, isAuthenticated: parentIsAuthenticated }) => {
+  const videoRef = useRef()
+  const canvasRef = useRef()
+  const [modelsLoaded, setModelsLoaded] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [localIsAuthenticated, setLocalIsAuthenticated] = useState(false)
+  const streamRef = useRef()
 
-//   const startVideo = () => {
-//     navigator.mediaDevices
-//       .getUserMedia({ video: true })
-//       .then((stream) => {
-//         videoRef.current.srcObject = stream;
-//       })
-//       .catch((err) => console.error(err));
-//   };
-
-//   const detectFace = async () => {
-//     if (loading) return;
-
-//     const video = videoRef.current;
-//     const canvas = canvasRef.current;
-
-//     const displaySize = { width: video.width, height: video.height };
-//     faceapi.matchDimensions(canvas, displaySize);
-
-//     const detections = await faceapi
-//       .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
-//       .withFaceLandmarks()
-//       .withFaceDescriptors();
-
-//     if (detections.length > 0) {
-//       const resizedDetections = faceapi.resizeResults(detections, displaySize);
-//       canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-//       faceapi.draw.drawDetections(canvas, resizedDetections);
-//       faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-
-//       // Pass the face descriptor to the parent component
-//       onFaceDetected(detections[0].descriptor);
-//     }
-//   };
-
-//   useEffect(() => {
-//     startVideo();
-//     const interval = setInterval(detectFace, 100);
-//     return () => clearInterval(interval);
-//   }, [loading]);
-
-//   return (
-//     <div style={{ 
-//       display: "flex", 
-//       alignItems: "center", 
-//       justifyContent: "center", 
-//       height: "80vh", 
-//       margin: "0" 
-//     }}>
-//       <video
-//   ref={videoRef}
-//   autoPlay
-//   muted
-//   width="665"
-//   height="480"
-//   style={{ 
-//     display: "block", 
-//     marginRight: "10px",
-//     border: "15px solid indigo",
-//     borderRadius: "10px" 
-//   }}
-// />
-// <canvas 
-//   ref={canvasRef} 
-//   width="320" 
-//   height="620" 
-//   style={{ 
-//     border: "15px solid indigo", 
-//     borderRadius: "10px", 
-//     backgroundColor: "black" 
-//   }} 
-// />
-
-//     </div>
-    
-    
-  
-//   );
-// };
-
-// export default FaceDetection;
-
-import React, { useEffect, useRef, useState } from "react";
-import * as faceapi from "face-api.js";
-
-const FaceDetection = ({ onFaceDetected }) => {
-  const videoRef = useRef();
-  const canvasRef = useRef();
-  const [loading, setLoading] = useState(true);
-  let streamRef = useRef(null); // Store the stream reference
+  const isAuthenticated = parentIsAuthenticated || localIsAuthenticated
 
   useEffect(() => {
     const loadModels = async () => {
-      await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
-      await faceapi.nets.faceLandmark68Net.loadFromUri("/models");
-      await faceapi.nets.faceRecognitionNet.loadFromUri("/models");
-      await faceapi.nets.ssdMobilenetv1.loadFromUri("/models");
-      setLoading(false);
-    };
-    loadModels();
-  }, []);
-
-  const startVideo = () => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true })
-      .then((stream) => {
-        streamRef.current = stream; // Store the stream for cleanup
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const stopVideo = () => {
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
-      console.log("Camera stopped.");
+      const MODEL_URL = "/models"
+      await Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+        faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+        faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+        faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
+      ])
+      setModelsLoaded(true)
     }
-  };
-
-  const detectFace = async () => {
-    if (loading) return;
-
-    const video = videoRef.current;
-    const canvas = canvasRef.current;
-
-    const displaySize = { width: video.width, height: video.height };
-    faceapi.matchDimensions(canvas, displaySize);
-
-    const detections = await faceapi
-      .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
-      .withFaceLandmarks()
-      .withFaceDescriptors();
-
-    if (detections.length > 0) {
-      const resizedDetections = faceapi.resizeResults(detections, displaySize);
-      canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-      faceapi.draw.drawDetections(canvas, resizedDetections);
-      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-
-      // Pass the face descriptor to the parent component
-      onFaceDetected(detections[0].descriptor);
-    }
-  };
+    loadModels()
+  }, [])
 
   useEffect(() => {
-    startVideo();
-    const interval = setInterval(detectFace, 100);
+    const startVideo = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
+        streamRef.current = stream
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream
+        }
+      } catch (err) {
+        console.error("Error accessing camera:", err)
+      }
+    }
+
+    if (modelsLoaded) {
+      startVideo()
+    }
 
     return () => {
-      clearInterval(interval);
-      stopVideo(); // Stop the camera when unmounting
-    };
-  }, [loading]);
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop())
+      }
+    }
+  }, [modelsLoaded])
+
+  const handleVideoOnPlay = () => {
+    setVideoLoaded(true)
+    const canvas = canvasRef.current
+    const video = videoRef.current
+
+    if (canvas && video) {
+      const displaySize = { width: 320, height: 320 }
+      faceapi.matchDimensions(canvas, displaySize)
+
+      setInterval(async () => {
+        if (video.paused || video.ended) return
+
+        const detections = await faceapi
+          .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+          .withFaceLandmarks()
+          .withFaceDescriptors()
+
+        const resizedDetections = faceapi.resizeResults(detections, displaySize)
+
+        const context = canvas.getContext("2d")
+        context.clearRect(0, 0, canvas.width, canvas.height)
+
+        faceapi.draw.drawDetections(canvas, resizedDetections)
+        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+
+        if (detections.length > 0 && onFaceDetected && !localIsAuthenticated) {
+          console.log("[v0] Face detected, setting authentication to true")
+          setLocalIsAuthenticated(true)
+          onFaceDetected(detections[0].descriptor)
+        }
+      }, 100)
+    }
+  }
 
   return (
-    <div style={{ 
-      display: "flex", 
-      alignItems: "center", 
-      justifyContent: "center", 
-      height: "80vh", 
-      margin: "0" 
-    }}>
+    <div
+      className={`relative w-80 h-80 mx-auto overflow-hidden rounded-full border-4 transition-all duration-700 ease-in-out transform ${
+        isAuthenticated
+          ? "border-green-500 shadow-lg shadow-green-200 scale-105"
+          : "border-blue-500 shadow-lg shadow-blue-200"
+      }`}
+    >
       <video
         ref={videoRef}
         autoPlay
         muted
-        width="665"
-        height="480"
-        style={{ 
-          display: "block", 
-          marginRight: "10px",
-          border: "15px solid indigo",
-          borderRadius: "10px" 
-        }}
+        onPlay={handleVideoOnPlay}
+        width="320"
+        height="320"
+        className="absolute top-0 left-0 w-full h-full object-cover transition-all duration-500"
       />
-      <canvas 
-        ref={canvasRef} 
-        width="320" 
-        height="620" 
-        style={{ 
-          border: "15px solid indigo", 
-          borderRadius: "10px", 
-          backgroundColor: "black" 
-        }} 
-      />
+      <canvas ref={canvasRef} width="320" height="320" className="absolute top-0 left-0 w-full h-full" />
+      {!modelsLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-75 rounded-full">
+          <div className="text-blue-600 font-medium text-center px-4">Loading face detection models...</div>
+        </div>
+      )}
+      {isAuthenticated && (
+        <div className="absolute inset-0 rounded-full border-4 border-green-400 animate-pulse opacity-50"></div>
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default FaceDetection;
+export default FaceDetection
