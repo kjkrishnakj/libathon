@@ -1,14 +1,18 @@
-
 import Issue from "@/models/Issue";
 import connectDb from "../../middleware/mongoose";
 
-export default async function handler(req, res) {
-  await connectDb();
+const handler = async (req, res) => {
+  if (req.method !== "GET") {
+    return res.status(405).json({ error: "Method Not Allowed" });
+  }
 
   try {
     const issuedBooks = await Issue.countDocuments({ rs: false });
-    res.status(200).json({ issuedBooks });
+    return res.status(200).json({ issuedBooks });
   } catch (error) {
-    res.status(500).json({ error: "Error fetching issued books count" });
+    console.error(error);
+    return res.status(500).json({ error: "Error fetching issued books count" });
   }
-}
+};
+
+export default connectDb(handler);
