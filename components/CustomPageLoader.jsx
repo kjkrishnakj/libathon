@@ -10,7 +10,7 @@ const CustomPageLoader = () => {
 
   useEffect(() => {
     const handleStart = (url) => {
-      console.log(`Loading: ${url}`)
+      // console.log(`Loading: ${url}`)
       setLoading(true)
     }
 
